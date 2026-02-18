@@ -1,156 +1,129 @@
-# 🚀 CRM PRO Backend — Production Ready
+🚀 CRM PRO Backend (Production Ready)
 
-Enterprise-level CRM backend built with **Django** and deployed using **Gunicorn + Nginx** with full **HTTPS** and security hardening.
+Professional, secure va production-level CRM Backend — Django, PostgreSQL, Gunicorn va Nginx asosida qurilgan.
+Real serverda ishlaydi, HTTPS, admin security va real deployment bilan.
 
----
+🌐 Live URL:
+👉 https://reality-engine.duckdns.org
 
-## 🌐 Live Environment
+🧠 Project Overview
 
-- **Base URL:**  
-  https://reality-engine.duckdns.org
+CRM PRO Backend — bu bizneslar uchun mo‘ljallangan kuchli CRM tizimi bo‘lib, quyidagilarni ta’minlaydi:
 
-- **Status Endpoint:**  
-GET /
+Mijozlarni (Clients) boshqarish
 
-Returns:
-```json
-{
-  "status": "OK",
-  "service": "CRM_PRO Backend",
-  "environment": "production",
-  "https": true
-}
-🔐 Security Overview
-✅ HTTPS (Let’s Encrypt)
+Lead’lar bilan ishlash
 
-✅ Admin panel IP restricted
+Deal / Sales pipeline
 
-✅ Admin URL protected
+Xavfsiz admin panel
 
-✅ Production mode (DEBUG=False)
+REST API orqali frontend bilan integratsiya
 
-✅ Secrets stored in .env (never committed)
+Loyiha real production serverda ishga tushirilgan va doimiy ishlashga tayyor.
 
-✅ Reverse proxy via Nginx
-
-✅ Gunicorn systemd service (auto-restart)
-
-🧩 Tech Stack
+🛠 Tech Stack
 Layer	Technology
-Language	Python 3.12
-Framework	Django
-API	Django REST Framework
+Backend	Django (Python)
 Database	PostgreSQL
+App Server	Gunicorn
 Web Server	Nginx
-WSGI	Gunicorn
-SSL	Let’s Encrypt
-OS	Ubuntu 24.04 LTS
+Security	HTTPS (Let’s Encrypt)
+OS	Ubuntu 24.04
+Deployment	Systemd service
+Version Control	Git + GitHub
 📁 Project Structure
 crm_pro/
 ├── apps/
-│   ├── clients/
-│   ├── deals/
-│   ├── leads/
-│   └── users/
+│   ├── users/        # Custom User model
+│   ├── clients/      # Clients management
+│   ├── leads/        # Leads system
+│   └── deals/        # Deals / Sales
+│
 ├── config/
-│   ├── settings.py
+│   ├── settings.py   # Production settings
 │   ├── urls.py
-│   └── wsgi.py
-├── staticfiles/
-├── media/
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── staticfiles/      # Collected static files
+├── media/            # Media uploads
 ├── manage.py
 ├── requirements.txt
-├── .env.example
 └── README.md
-⚙️ Environment Variables
-All sensitive configuration is loaded from .env.
 
-Example:
+🔐 Security Features
 
-DEBUG=False
-SECRET_KEY=change-me
+✔ HTTPS (SSL)
+✔ Admin panel IP-based restriction
+✔ Admin URL protected
+✔ Production settings (DEBUG = False)
+✔ Secure headers via Nginx
+✔ Gunicorn behind reverse proxy
 
-ALLOWED_HOSTS=reality-engine.duckdns.org
+/admin/ endpoint restricted va bruteforce’dan himoyalangan.
 
-DB_NAME=crm_pro_db
-DB_USER=crm_pro_user
-DB_PASSWORD=change-me
-DB_HOST=localhost
-DB_PORT=5432
-⚠️ Never commit .env to GitHub
+🔑 Admin Panel
+https://reality-engine.duckdns.org/admin/
 
-🛠 Local Development Setup
-git clone https://github.com/USERNAME/crm-pro-backend.git
+
+Custom User model
+
+Clients / Leads / Deals CRUD
+
+Secure production admin
+
+🔌 API Base
+Base URL: https://reality-engine.duckdns.org/api/
+
+
+API frontend yoki mobile app bilan ulanish uchun tayyor.
+
+⚙️ Local Development (Optional)
+git clone https://github.com/Zafar077669/crm-pro-backend.git
 cd crm-pro-backend
 
 python -m venv venv
 source venv/bin/activate
 
 pip install -r requirements.txt
-cp .env.example .env
-
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
-🧪 Health Check
-curl https://reality-engine.duckdns.org
-Expected response:
 
+🚀 Production Deployment (Summary)
+
+Gunicorn — systemd service
+
+Nginx — reverse proxy
+
+PostgreSQL — production DB
+
+Certbot — SSL auto-renew
+
+Server 24/7 doimiy ishlashga sozlangan.
+
+🧪 Health Check
 {
   "status": "OK",
-  "service": "CRM_PRO Backend"
+  "service": "CRM_PRO Backend",
+  "environment": "production",
+  "https": true,
+  "admin": "restricted"
 }
-🔑 Admin Panel
-URL:
 
-/admin/
-Access:
+📌 Use Cases
 
-Restricted by IP
+✔ Business CRM
+✔ Startup backend
+✔ Admin dashboard backend
+✔ REST API for frontend
+✔ Portfolio / Commercial project
 
-HTTPS only
+👨‍💻 Author
 
-Authentication:
-
-Django Admin (Superuser)
-
-🚀 Production Deployment
-Gunicorn managed via systemd
-
-Nginx reverse proxy
-
-Automatic restart on failure
-
-SSL auto-renew via Certbot
-
-Service status:
-
-systemctl status crm_pro
-📦 API Usage (for Frontend)
-Base API path:
-
-/api/
-JSON only
-
-RESTful endpoints
-
-Auth ready (JWT / Token can be added)
-
-🧠 Best Practices Applied
-Clean architecture
-
-Environment isolation
-
-Production-grade server setup
-
-Security first approach
-
-Ready for scaling
-
-👤 Author
 Zafar Sharipov
-Backend Engineer / Full-Stack Developer
+Backend Developer (Django / Python)
 
-📜 License
-Private / Internal use
-All rights reserved.
+GitHub:
+👉 https://github.com/Zafar077669
