@@ -1,129 +1,231 @@
-🚀 CRM PRO Backend (Production Ready)
+# Apex Marketplace Backend
 
-Professional, secure va production-level CRM Backend — Django, PostgreSQL, Gunicorn va Nginx asosida qurilgan.
-Real serverda ishlaydi, HTTPS, admin security va real deployment bilan.
+AI-powered Marketplace Platform backend built with Django and PostgreSQL.
 
-🌐 Live URL:
-👉 https://reality-engine.duckdns.org
+Apex Marketplace is a scalable backend system designed for local commerce platforms, providing product discovery, store management, recommendation services, authentication, and marketplace operations through a RESTful API architecture.
 
-🧠 Project Overview
+---
 
-CRM PRO Backend — bu bizneslar uchun mo‘ljallangan kuchli CRM tizimi bo‘lib, quyidagilarni ta’minlaydi:
+## Overview
 
-Mijozlarni (Clients) boshqarish
+The project is designed as a modular marketplace backend that can serve web applications, mobile applications, and third-party integrations.
 
-Lead’lar bilan ishlash
+Core objectives:
 
-Deal / Sales pipeline
+- Marketplace infrastructure
+- Product catalog management
+- Shop management
+- Regional product discovery
+- Favorites and reviews
+- JWT authentication
+- AI-powered search and recommendations
+- Scalable API architecture
+- Background task processing
 
-Xavfsiz admin panel
+---
 
-REST API orqali frontend bilan integratsiya
+## Technology Stack
 
-Loyiha real production serverda ishga tushirilgan va doimiy ishlashga tayyor.
+| Layer | Technology |
+|---------|------------|
+| Backend | Django 5 |
+| API | Django REST Framework |
+| Database | PostgreSQL |
+| Authentication | JWT (SimpleJWT) |
+| Cache | Redis |
+| Background Jobs | Celery |
+| Scheduler | Celery Beat |
+| Documentation | DRF Spectacular (OpenAPI) |
+| Reverse Proxy | Nginx |
+| Application Server | Gunicorn |
+| Containerization | Docker & Docker Compose |
 
-🛠 Tech Stack
-Layer	Technology
-Backend	Django (Python)
-Database	PostgreSQL
-App Server	Gunicorn
-Web Server	Nginx
-Security	HTTPS (Let’s Encrypt)
-OS	Ubuntu 24.04
-Deployment	Systemd service
-Version Control	Git + GitHub
-📁 Project Structure
-crm_pro/
-├── apps/
-│   ├── users/        # Custom User model
-│   ├── clients/      # Clients management
-│   ├── leads/        # Leads system
-│   └── deals/        # Deals / Sales
-│
-├── config/
-│   ├── settings.py   # Production settings
-│   ├── urls.py
-│   ├── wsgi.py
-│   └── asgi.py
-│
-├── staticfiles/      # Collected static files
-├── media/            # Media uploads
-├── manage.py
-├── requirements.txt
-└── README.md
+---
 
-🔐 Security Features
+## Architecture
 
-✔ HTTPS (SSL)
-✔ Admin panel IP-based restriction
-✔ Admin URL protected
-✔ Production settings (DEBUG = False)
-✔ Secure headers via Nginx
-✔ Gunicorn behind reverse proxy
+The backend follows a modular application structure:
 
-/admin/ endpoint restricted va bruteforce’dan himoyalangan.
+```text
+apps/
 
-🔑 Admin Panel
-https://reality-engine.duckdns.org/admin/
+├── users/
+├── regions/
+├── shops/
+├── categories/
+├── products/
+├── favorites/
+├── reviews/
+├── ai/
+└── recommendations/
+```
 
+Each module is isolated and responsible for a specific business domain.
 
-Custom User model
+---
 
-Clients / Leads / Deals CRUD
+## Main Features
 
-Secure production admin
+### Authentication
 
-🔌 API Base
-Base URL: https://reality-engine.duckdns.org/api/
+- JWT Access Token
+- JWT Refresh Token
+- Custom User Model
+- Protected Endpoints
 
+### Marketplace
 
-API frontend yoki mobile app bilan ulanish uchun tayyor.
+- Product Management
+- Category Management
+- Shop Management
+- Regional Filtering
+- Product Search
+- Product Reviews
+- Favorites System
 
-⚙️ Local Development (Optional)
-git clone https://github.com/Zafar077669/crm-pro-backend.git
-cd crm-pro-backend
+### AI Services
 
+- AI Search Endpoint
+- Recommendation Engine Foundation
+- Background Processing with Celery
+
+### Infrastructure
+
+- Redis Caching
+- Celery Workers
+- Celery Beat Scheduler
+- Dockerized Environment
+- Nginx Reverse Proxy
+- Gunicorn Application Server
+
+---
+
+## API Documentation
+
+OpenAPI schema and Swagger documentation are available through DRF Spectacular.
+
+Example endpoints:
+
+```text
+/api/v1/auth/login/
+/api/v1/auth/me/
+/api/v1/ai/search/
+```
+
+---
+
+## Background Services
+
+### Celery Worker
+
+Used for:
+
+- Recommendation generation
+- AI processing
+- Asynchronous tasks
+- Heavy computations
+
+### Celery Beat
+
+Used for:
+
+- Scheduled jobs
+- Recommendation updates
+- Cache maintenance
+- Statistics collection
+
+---
+
+## Development Setup
+
+Clone repository:
+
+```bash
+git clone https://github.com/Zafar077669/apex-marketplace-backend.git
+
+cd apex-marketplace-backend
+```
+
+Create environment:
+
+```bash
 python -m venv venv
-source venv/bin/activate
+```
 
+Activate:
+
+```bash
+venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
+
+Run migrations:
+
+```bash
 python manage.py migrate
+```
+
+Create admin user:
+
+```bash
 python manage.py createsuperuser
+```
+
+Run development server:
+
+```bash
 python manage.py runserver
+```
 
-🚀 Production Deployment (Summary)
+---
 
-Gunicorn — systemd service
+## Docker Environment
 
-Nginx — reverse proxy
+Start all services:
 
-PostgreSQL — production DB
+```bash
+docker compose up -d --build
+```
 
-Certbot — SSL auto-renew
+Services:
 
-Server 24/7 doimiy ishlashga sozlangan.
+- PostgreSQL
+- Redis
+- Django Backend
+- Celery Worker
+- Celery Beat
+- Nginx
 
-🧪 Health Check
-{
-  "status": "OK",
-  "service": "CRM_PRO Backend",
-  "environment": "production",
-  "https": true,
-  "admin": "restricted"
-}
+---
 
-📌 Use Cases
+## Current Status
 
-✔ Business CRM
-✔ Startup backend
-✔ Admin dashboard backend
-✔ REST API for frontend
-✔ Portfolio / Commercial project
+Current implementation includes:
 
-👨‍💻 Author
+- Django REST API
+- PostgreSQL Integration
+- Redis Cache Layer
+- JWT Authentication
+- Celery Integration
+- Celery Beat Scheduling
+- Docker Infrastructure
+- Nginx Reverse Proxy
+- Swagger Documentation
 
-Zafar Sharipov
-Backend Developer (Django / Python)
+The project is actively evolving with additional AI and marketplace features planned.
+
+---
+
+## Author
+
+**Zafar Sharipov**
+
+Python Backend Developer
 
 GitHub:
-👉 https://github.com/Zafar077669
+https://github.com/Zafar077669
