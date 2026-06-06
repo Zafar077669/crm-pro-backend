@@ -1,26 +1,26 @@
-# Apex Marketplace Backend
+# CRM PRO Backend
 
-AI-powered Marketplace Platform backend built with Django and PostgreSQL.
+Enterprise-grade CRM backend platform built with Django and PostgreSQL.
 
-Apex Marketplace is a scalable backend system designed for local commerce platforms, providing product discovery, store management, recommendation services, authentication, and marketplace operations through a RESTful API architecture.
+CRM PRO Backend is designed to provide a scalable foundation for customer relationship management systems, sales workflows, lead tracking, and business process automation through a RESTful API architecture.
 
 ---
 
-## Overview
+## Project Overview
 
-The project is designed as a modular marketplace backend that can serve web applications, mobile applications, and third-party integrations.
+The system centralizes client management, lead processing, and sales operations into a single backend platform.
 
-Core objectives:
+Core functionality includes:
 
-- Marketplace infrastructure
-- Product catalog management
-- Shop management
-- Regional product discovery
-- Favorites and reviews
-- JWT authentication
-- AI-powered search and recommendations
-- Scalable API architecture
-- Background task processing
+- Client Management
+- Lead Management
+- Sales Pipeline Tracking
+- User Authentication
+- Administrative Management
+- REST API Integration
+- Business Data Organization
+
+The project follows a modular architecture that supports future expansion and integration with web and mobile applications.
 
 ---
 
@@ -28,111 +28,92 @@ Core objectives:
 
 | Layer | Technology |
 |---------|------------|
-| Backend | Django 5 |
+| Backend | Django |
 | API | Django REST Framework |
 | Database | PostgreSQL |
-| Authentication | JWT (SimpleJWT) |
-| Cache | Redis |
-| Background Jobs | Celery |
-| Scheduler | Celery Beat |
-| Documentation | DRF Spectacular (OpenAPI) |
-| Reverse Proxy | Nginx |
+| Authentication | Django Auth |
 | Application Server | Gunicorn |
-| Containerization | Docker & Docker Compose |
+| Reverse Proxy | Nginx |
+| Containerization | Docker |
+| Version Control | Git & GitHub |
 
 ---
 
 ## Architecture
 
-The backend follows a modular application structure:
-
 ```text
-apps/
+crm_pro/
 
+├── apps/
+│
 ├── users/
-├── regions/
-├── shops/
-├── categories/
-├── products/
-├── favorites/
-├── reviews/
-├── ai/
-└── recommendations/
+│   └── Custom User Management
+│
+├── clients/
+│   └── Customer Management
+│
+├── leads/
+│   └── Lead Tracking
+│
+├── deals/
+│   └── Sales Pipeline
+│
+├── config/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── asgi.py
+│
+├── media/
+├── staticfiles/
+├── manage.py
+└── requirements.txt
 ```
-
-Each module is isolated and responsible for a specific business domain.
 
 ---
 
 ## Main Features
 
-### Authentication
+### User Management
 
-- JWT Access Token
-- JWT Refresh Token
 - Custom User Model
-- Protected Endpoints
+- Authentication System
+- Role-Based Expansion Ready
 
-### Marketplace
+### Client Management
 
-- Product Management
-- Category Management
-- Shop Management
-- Regional Filtering
-- Product Search
-- Product Reviews
-- Favorites System
+- Client Registration
+- Client Information Tracking
+- Relationship Management
 
-### AI Services
+### Lead Management
 
-- AI Search Endpoint
-- Recommendation Engine Foundation
-- Background Processing with Celery
+- Lead Collection
+- Lead Qualification
+- Lead Monitoring
 
-### Infrastructure
+### Sales Management
 
-- Redis Caching
-- Celery Workers
-- Celery Beat Scheduler
-- Dockerized Environment
-- Nginx Reverse Proxy
-- Gunicorn Application Server
+- Deal Tracking
+- Pipeline Management
+- Sales Workflow Organization
 
----
+### Administration
 
-## API Documentation
-
-OpenAPI schema and Swagger documentation are available through DRF Spectacular.
-
-Example endpoints:
-
-```text
-/api/v1/auth/login/
-/api/v1/auth/me/
-/api/v1/ai/search/
-```
+- Django Admin Panel
+- Data Management Interface
+- Business Process Control
 
 ---
 
-## Background Services
+## API Layer
 
-### Celery Worker
+The backend exposes RESTful endpoints that can be consumed by:
 
-Used for:
-
-- Recommendation generation
-- AI processing
-- Asynchronous tasks
-- Heavy computations
-
-### Celery Beat
-
-Used for:
-
-- Scheduled jobs
-- Recommendation updates
-- Cache maintenance
-- Statistics collection
+- Web Applications
+- Mobile Applications
+- Third-Party Integrations
+- Internal Dashboards
 
 ---
 
@@ -141,18 +122,18 @@ Used for:
 Clone repository:
 
 ```bash
-git clone https://github.com/Zafar077669/apex-marketplace-backend.git
+git clone https://github.com/Zafar077669/crm-pro-backend.git
 
-cd apex-marketplace-backend
+cd crm-pro-backend
 ```
 
-Create environment:
+Create virtual environment:
 
 ```bash
 python -m venv venv
 ```
 
-Activate:
+Activate environment:
 
 ```bash
 venv\Scripts\activate
@@ -164,13 +145,13 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run migrations:
+Apply migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-Create admin user:
+Create administrator:
 
 ```bash
 python manage.py createsuperuser
@@ -184,40 +165,41 @@ python manage.py runserver
 
 ---
 
-## Docker Environment
+## Design Goals
 
-Start all services:
-
-```bash
-docker compose up -d --build
-```
-
-Services:
-
-- PostgreSQL
-- Redis
-- Django Backend
-- Celery Worker
-- Celery Beat
-- Nginx
+- Clean Architecture
+- Maintainable Codebase
+- Modular Structure
+- Scalable Backend Design
+- Business-Oriented Development
+- API-First Approach
 
 ---
 
-## Current Status
+## Use Cases
+
+- Customer Relationship Management
+- Sales Tracking Systems
+- Lead Management Platforms
+- Business Administration Systems
+- Internal Company Tools
+- Startup MVP Backends
+
+---
+
+## Project Status
 
 Current implementation includes:
 
-- Django REST API
+- Core CRM Architecture
+- User Management
+- Client Management
+- Lead Tracking
+- Deal Management
 - PostgreSQL Integration
-- Redis Cache Layer
-- JWT Authentication
-- Celery Integration
-- Celery Beat Scheduling
-- Docker Infrastructure
-- Nginx Reverse Proxy
-- Swagger Documentation
+- Django Administration Panel
 
-The project is actively evolving with additional AI and marketplace features planned.
+Additional features and integrations can be added as the platform evolves.
 
 ---
 
